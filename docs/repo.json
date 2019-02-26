@@ -1,0 +1,8 @@
+{
+  "name": "docker-psscriptanalyzer",
+  "tagline": "PSScriptAnalyzer is a static code checker for Windows PowerShell modules and scripts.",
+  "license": {
+    "name": "MIT"
+  },
+  "tags": ["docker", "psscriptanalyzer", "powershell"]
+}
