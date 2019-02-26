@@ -1,2 +1,2 @@
 #!/usr/bin/env sh
-pwsh -Command "Invoke-ScriptAnalyzer $@"
+pwsh -Command "Invoke-ScriptAnalyzer -EnableExit $@"
