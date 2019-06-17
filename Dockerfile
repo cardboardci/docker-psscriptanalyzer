@@ -5,7 +5,7 @@ COPY rootfs/ /
 RUN chmod +x /usr/local/bin/PSFormatter /usr/local/bin/PSScriptAnalyzer
 SHELL ["pwsh", "-Command"]
 RUN Set-PSRepository PSGallery -InstallationPolicy Trusted
-RUN Install-Module -Name PSScriptAnalyzer -Force
+RUN Install-Module -Name PSScriptAnalyzer -RequiredVersion 1.18.0 -Force
 
 ##
 ## Image Metadata
