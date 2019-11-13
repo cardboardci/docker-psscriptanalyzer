@@ -1,8 +1,0 @@
----
-name: github
-provider: github.com
-repository: docker-psscriptanalyzer
-url: https://github.com/cardboardci/docker-psscriptanalyzer
-clone:
-  ssh: git@github.com:cardboardci/docker-psscriptanalyzer.git
-  https: https://github.com/cardboardci/docker-psscriptanalyzer.git
