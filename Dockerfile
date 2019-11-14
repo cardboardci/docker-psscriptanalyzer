@@ -1,4 +1,8 @@
-FROM mcr.microsoft.com/powershell:6.2.3-alpine-3.8
+FROM cardboardci/ci-core:focal
+USER root
+
+ARG DEBIAN_FRONTEND=noninteractive
+
 RUN apk add --no-cache bash
 RUN mkdir -p /opt/microsoft/powershell/6/Modules/PowerShellGet/
 COPY rootfs/ /
