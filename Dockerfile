@@ -15,15 +15,15 @@ RUN apt-get update \
     && apt-get update \
     && apt-get install --no-install-recommends -y powershell \
     && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf *.deb /var/lib/apt/lists/* \
     && mkdir -p /opt/microsoft/powershell/6/Modules/PowerShellGet/
 
 COPY rootfs/ /
-RUN pwsh -Command 'Set-PSRepository PSGallery -InstallationPolicy Trusted' \
-    && pwsh -Command 'Install-Module -Name PSScriptAnalyzer -RequiredVersion 1.18.3 -Force' \
-    && chmod +x /usr/local/bin/PSFormatter /usr/local/bin/PSScriptAnalyzer
+RUN chmod +x /usr/local/bin/PSFormatter /usr/local/bin/PSScriptAnalyzer
 
 USER cardboardci
+RUN pwsh -Command 'Set-PSRepository PSGallery -InstallationPolicy Trusted' \
+    && pwsh -Command 'Install-Module -Name PSScriptAnalyzer -RequiredVersion 1.18.3 -Force'
 
 ##
 ## Image Metadata
