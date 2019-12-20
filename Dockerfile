@@ -13,9 +13,9 @@ RUN apt-get update \
     && dpkg -i packages-microsoft-prod.deb \
     && echo "deb [arch=amd64] https://packages.microsoft.com/ubuntu/18.04/prod bionic main" > /etc/apt/sources.list.d/microsoft-prod.list \
     && apt-get update \
-    && apt-get install --no-install-recommends -y powershell \
+    && apt-get install --no-install-recommends -y powershell=${VERSION}-1.ubuntu.18.04 \
     && apt-get clean \
-    && rm -rf *.deb /var/lib/apt/lists/* \
+    && rm -rf ./*.deb /var/lib/apt/lists/* \
     && mkdir -p /opt/microsoft/powershell/6/Modules/PowerShellGet/
 
 COPY rootfs/ /
