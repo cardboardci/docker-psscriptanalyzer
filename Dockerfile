@@ -5,7 +5,7 @@ ARG VERSION=6.2.3
 
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
-    && apt-get install -y ca-certificates \
+    && apt-get install --no-install-recommends -y ca-certificates=20190110 \
     && curl -sSL http://mirrors.edge.kernel.org/ubuntu/pool/main/i/icu/libicu60_60.2-3ubuntu3_amd64.deb -o libicu60_60.2-3ubuntu3_amd64.deb \
     && curl -sSL http://security.ubuntu.com/ubuntu/pool/main/o/openssl1.0/libssl1.0.0_1.0.2n-1ubuntu5.3_amd64.deb -o libssl1.0.0_1.0.2n-1ubuntu5.3_amd64.deb \
     && dpkg -i libicu60_60.2-3ubuntu3_amd64.deb libssl1.0.0_1.0.2n-1ubuntu5.3_amd64.deb \
@@ -13,7 +13,9 @@ RUN apt-get update \
     && dpkg -i packages-microsoft-prod.deb \
     && echo "deb [arch=amd64] https://packages.microsoft.com/ubuntu/18.04/prod bionic main" > /etc/apt/sources.list.d/microsoft-prod.list \
     && apt-get update \
-    && apt-get install -y powershell \
+    && apt-get install --no-install-recommends -y powershell \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
     && mkdir -p /opt/microsoft/powershell/6/Modules/PowerShellGet/
 
 COPY rootfs/ /
