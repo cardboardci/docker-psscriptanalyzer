@@ -1,9 +1,16 @@
-FROM cardboardci/ci-core:0.0.1-20191220
+FROM cardboardci/ci-core@sha256:5b93f4c8cc1ddaa809f9c27d0a865a974ccb43e5e3d38334df1b0d77ea1843fb
 USER root
 
 ARG VERSION=6.2.3
 
 ARG DEBIAN_FRONTEND=noninteractive
+
+COPY provision/pkglist /cardboardci/pkglist
+RUN apt-get update \
+    && xargs -a /cardboardci/pkglist apt-get install --no-install-recommends -y \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
 RUN apt-get update \
     && apt-get install --no-install-recommends -y ca-certificates=20190110 \
     && curl -sSL http://mirrors.edge.kernel.org/ubuntu/pool/main/i/icu/libicu60_60.2-3ubuntu3_amd64.deb -o libicu60_60.2-3ubuntu3_amd64.deb \
