@@ -4,6 +4,13 @@ USER root
 ARG VERSION=6.2.3
 
 ARG DEBIAN_FRONTEND=noninteractive
+
+COPY provision/pkglist /cardboardci/pkglist
+RUN apt-get update \
+    && xargs -a /cardboardci/pkglist apt-get install --no-install-recommends -y \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
 RUN apt-get update \
     && apt-get install --no-install-recommends -y ca-certificates=20190110 \
     && curl -sSL http://mirrors.edge.kernel.org/ubuntu/pool/main/i/icu/libicu60_60.2-3ubuntu3_amd64.deb -o libicu60_60.2-3ubuntu3_amd64.deb \
