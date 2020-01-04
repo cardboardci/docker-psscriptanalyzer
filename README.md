@@ -23,19 +23,31 @@ docker pull cardboardci/psscriptanalyzer
 ### Test interactively
 
 ```bash
-docker run -it cardboardci/psscriptanalyzer /bin/bash
+docker run -it cardboardci/psscriptanalyzer pwsh
 ```
 
-### Run basic AWS command
+### Test interactively with Bash
 
 ```bash
-docker run -it -v "$(pwd)":/workspace cardboardci/psscriptanalyzer aws s3 cp file.txt s3://bucket/file.txt
+docker run -it cardboardci/psscriptanalyzer bash
 ```
 
-### Run AWS CLI with custom profile
+### Emit version table
 
 ```bash
-docker run -it -v "$(pwd)":/workspace -v "~/.aws/":/cardboardci/.aws/ cardboardci/psscriptanalyzer aws s3 cp file.txt s3://bucket/file.txt
+docker run -it cardboardci/psscriptanalyzer pwsh -Command '$PSVersionTable'
+```
+
+### Emit versions of installed modules
+
+```bash
+docker run -it cardboardci/psscriptanalyzer pwsh -Command 'Get-InstalledModule'
+```
+
+### Run format invocation
+
+```bash
+docker run -it -v "$(pwd)":/workspace cardboardci/psscriptanalyzer pwsh -Command 'Invoke-Formatter -ScriptDefinition (Get-Content -Path 'File.ps1' -Raw)'
 ```
 
 ### Continuous Integration Services
