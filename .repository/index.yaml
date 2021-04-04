@@ -1,0 +1,17 @@
+slug: docker-psscriptanalyzer
+description: PSScriptAnalyzer is a static code checker for Windows PowerShell modules and scripts.
+project: cardboardci
+namespace: docker
+status: archived
+icon: icon.svg
+license:
+  type: MIT
+  content: Jonathan Beverly <jrbeverly>
+  year: 2019
+topics: |-
+  [
+    "dockerfile",
+    "powershell",
+    "lint",
+    "best-practices"
+  ]
