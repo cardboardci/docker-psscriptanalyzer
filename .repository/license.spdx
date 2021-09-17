@@ -1,0 +1,8 @@
+SPDXVersion: SPDX-2.0
+DataLicense: MIT
+Creator: Jonathan R. Beverly
+Created: 2019
+PackageName: cardboardci/docker-psscriptanalyzer
+PackageOriginator: Jonathan R. Beverly
+PackageHomePage: https://github.com/cardboardci/docker-psscriptanalyzer
+PackageLicenseDeclared: MIT
